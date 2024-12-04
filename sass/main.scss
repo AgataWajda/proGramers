@@ -1,0 +1,438 @@
+@use "./colors" as color;
+@use "./animations";
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	scroll-padding-top: 72px;
+}
+
+body {
+	font-family: "Montserrat", sans-serif;
+	background-color: color.$bg-color;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.brand-color-accent {
+	color: color.$brand-color;
+}
+
+.shadow-bg {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.shadow {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.73);
+}
+
+.navbar {
+	width: 100vw;
+	text-transform: uppercase;
+	z-index: 30;
+	transition: background-color 0.6s;
+	background-color: rgba(0, 0, 0, 0.73);
+
+	&-toggler {
+		padding: 10px 15px;
+		border: none;
+	}
+
+	&-toggler:hover,
+	&-toggler:focus {
+		box-shadow: none;
+	}
+
+	&-brand {
+		font-weight: bold;
+	}
+
+	.fa-bars {
+		font-size: 20px;
+	}
+
+	.nav-link,
+	&-brand,
+	.fa-bars {
+		color: color.$brand-white;
+		transition: color 0.3s;
+	}
+
+	&-nav .nav-link.active,
+	.nav-link:focus,
+	.nav-link:hover,
+	&-brand:hover,
+	&-brand:focus,
+	.fa-bars:hover,
+	.fa-bars:focus {
+		color: color.$brand-color;
+	}
+}
+
+.hero-img {
+	position: relative;
+	height: 100vh;
+	background-image: url("../img/software-640.jpg");
+	background-size: cover;
+	background-position: center;
+
+	.hero-text {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		color: color.$brand-white;
+		z-index: 10;
+
+		h1 {
+			text-transform: uppercase;
+			font-weight: bold;
+		}
+	}
+
+	.btn-outline-light {
+		margin-top: 10px;
+		text-transform: uppercase;
+	}
+}
+
+.arrow-link {
+	position: absolute;
+	left: 50%;
+	bottom: 30px;
+	padding: 10px;
+	transform: translateX(-50%);
+	z-index: 20;
+
+	.fa-circle-chevron-down {
+		font-size: 35px;
+		color: color.$brand-white;
+		transition: color 0.3s;
+	}
+}
+
+.arrow-link:hover {
+	cursor: pointer;
+
+	.fa-circle-chevron-down {
+		color: color.$brand-color;
+	}
+}
+
+.section-title {
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.underline {
+	width: 60px;
+	height: 4px;
+	margin: 0 auto 40px;
+	border-top: solid 4px color.$brand-color;
+}
+
+.aboutus {
+	i {
+		margin-top: 20px;
+		font-size: 30px;
+	}
+
+	&-box {
+		transition: color 0.3s;
+	}
+
+	&-box:hover {
+		color: color.$brand-color;
+	}
+
+	&-card-tittle {
+		font-size: 18px;
+		text-transform: uppercase;
+	}
+
+	&-card-text {
+		padding-bottom: 20px;
+		font-size: 14px;
+	}
+}
+
+.platforms {
+	position: relative;
+	color: color.$brand-white;
+	background-image: url("../img/cyber-brain-640.jpg");
+	background-size: cover;
+	background-position: center;
+
+	.container {
+		position: relative;
+		z-index: 10;
+	}
+
+	&-hero-item {
+		margin: 10px 0;
+	}
+
+	&-card-title {
+		font-size: 20px;
+	}
+
+	i {
+		font-size: 20px;
+	}
+}
+
+.portfolio {
+	.card-group {
+		gap: 20px;
+	}
+
+	.carousel-item {
+		height: 480px;
+	}
+	.carousel-caption {
+		left: 0;
+		right: 0;
+		padding: 30px 0;
+		background-color: rgba(0, 0, 0, 0.8);
+	}
+
+	.carousel-indicators {
+		padding-bottom: 20px;
+	}
+}
+
+.prices {
+	&-box {
+		gap: 50px;
+	}
+
+	&-item {
+		margin-top: 20px;
+		padding: 30px;
+		background-color: color.$brand-white;
+		box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.4);
+		transition: scale 0.3s;
+	}
+
+	&-item:hover {
+		scale: 1.05;
+	}
+
+	&-text {
+		padding: 20px 10px 0;
+		border-top: solid 2px #ddd;
+	}
+
+	h5 {
+		font-size: 18px;
+		text-transform: uppercase;
+		color: color.$brand-color;
+	}
+
+	span {
+		font-weight: bold;
+	}
+
+	i {
+		padding: 0 5px;
+		font-size: 20px;
+	}
+
+	&-price {
+		font-size: 22px;
+		font-weight: bold;
+	}
+
+	&-order-btn {
+		padding: 5px 10px;
+		color: color.$brand-white;
+		background-color: #666;
+		border: none;
+		border-radius: 5px;
+		transition: background-color 0.3s;
+	}
+
+	&-order-btn:hover {
+		background-color: color.$brand-color;
+	}
+
+	&-info {
+		margin-top: 30px;
+		padding: 0 10px;
+
+		a {
+			text-decoration: none;
+			color: color.$brand-color;
+		}
+	}
+}
+
+.team {
+	position: relative;
+	background-image: url("../img/team/background.jpeg");
+	background-size: cover;
+	background-attachment: fixed;
+
+	.shadow {
+		background-color: rgba(0, 0, 0, 0.7);
+	}
+
+	.section-title,
+	.underline,
+	&-members {
+		position: relative;
+		z-index: 10;
+	}
+
+	.swiper {
+		width: 80%;
+		cursor: grab;
+	}
+
+	.section-title {
+		color: color.$brand-white;
+	}
+
+	.card {
+		transition: scale 0.3s;
+
+		img {
+			height: 200px;
+			object-fit: cover;
+		}
+	}
+
+	.card:hover {
+		scale: 0.96;
+	}
+
+	.card-body {
+		height: 150px;
+	}
+
+	&-card-footer {
+		display: flex;
+		justify-content: space-around;
+		padding: 10px;
+		font-size: 20px;
+
+		a {
+			color: color.$brand-color;
+		}
+	}
+}
+
+.achievements {
+	&-item {
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	i {
+		margin-bottom: 10px;
+		font-size: 40px;
+		color: color.$brand-white;
+		text-shadow: 0px 0px 5px #000;
+	}
+
+	&-numbers {
+		margin: 0;
+		font-size: 20px;
+		font-weight: 600;
+	}
+
+	&-text {
+		font-size: 13px;
+		text-transform: uppercase;
+	}
+}
+
+.contact {
+	position: relative;
+	color: color.$brand-white;
+	background-image: url("../img/city-640.jpg");
+	background-position: center;
+	background-size: cover;
+
+	.shadow {
+		background-color: rgba(0, 0, 0, 0.6);
+	}
+
+	.section-title,
+	.underline,
+	&-wrapper {
+		position: relative;
+		z-index: 10;
+	}
+
+	&-wrapper {
+		display: flex;
+		align-items: center;
+	}
+
+	&-item {
+		margin-top: 60px;
+	}
+
+	h5 {
+		text-transform: uppercase;
+		font-size: calc(1rem + 0.9vw);
+	}
+
+	i {
+		margin: 15px 20px 0;
+		font-size: 24px;
+		color: color.$brand-white;
+	}
+}
+
+@media (min-width: 576px) {
+	.card-img-top {
+		height: 105px;
+	}
+}
+
+@media (min-width: 768px) {
+	.hero-text {
+		h1 {
+			font-size: 42px;
+		}
+		p {
+			font-size: 20px;
+		}
+	}
+	.card-img-top {
+		height: 145px;
+	}
+}
+
+@media (min-width: 992px) {
+	nav {
+		background: none;
+	}
+
+	.hero-img {
+		background-image: url("../img/software-1920.jpg");
+	}
+
+	.platforms {
+		background-image: url("../img/cyber-brain.jpg");
+	}
+	.contact {
+		background-image: url("../img/city-1200.jpg");
+	}
+}
